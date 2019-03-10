@@ -8,6 +8,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
 
 </head>
 
@@ -15,7 +16,7 @@
 
     <div class="container">
         <br>
-
+        
         <h1 class="text-center">Survey Questions</h2>
             <br>
 
@@ -28,7 +29,7 @@
 
             <h3>Question 1</h3>
             <h4>Coffee is an essential element in your daily routine</h4>
-            <select class="chosen-select" id="q1" style="display: none;">
+            <select class="chosen-select" id="q1">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -39,7 +40,18 @@
 
             <h3>Question 2</h3>
             <h4>You like to attend live events such as concerts</h4>
-            <select class="chosen-select" id="q2" style="display: none;">
+            <select class="chosen-select" id="q2">
+                <option value></option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+
+            <h3>Question 3</h3>
+            <h4>You like to attend live events such as concerts</h4>
+            <select class="chosen-select" id="q3">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -50,7 +62,7 @@
           
             <h3>Question 4</h3>
             <h4>You often read books out of want, rather than necessity</h4>
-            <select class="chosen-select" id="q4" style="display: none;">
+            <select class="chosen-select" id="q4">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -61,7 +73,7 @@
 
             <h3>Question 5</h3>
             <h4>You generally enjoy spending time around other people</h4>
-            <select class="chosen-select" id="q5" style="display: none;">
+            <select class="chosen-select" id="q5">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -72,7 +84,7 @@
 
             <h3>Question 6</h3>
             <h4> You believe people of all races and genders deserve equal rights</h4>
-            <select class="chosen-select" id="q6" style="display: none;">
+            <select class="chosen-select" id="q6">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -83,7 +95,7 @@
 
             <h3>Question 7</h3>
             <h4>You are guarded with your emotions</h4>
-            <select class="chosen-select" id="q7" style="display: none;">
+            <select class="chosen-select" id="q7" >
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -94,7 +106,7 @@
 
             <h3>Question 8</h3>
             <h4>Traveling and exploring new places is an important part of your life</h4>
-            <select class="chosen-select" id="q1" style="display: none;">
+            <select class="chosen-select" id="q8">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -105,7 +117,7 @@
 
             <h3>Question 9</h3>
             <h4>You value honestly over tact</h4>
-            <select class="chosen-select" id="q1" style="display: none;">
+            <select class="chosen-select" id="q9">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -116,7 +128,7 @@
 
             <h3>Question 10</h3>
             <h4>Science and fact should be the basis of all decisions</h4>
-            <select class="chosen-select" id="q1" style="display: none;">
+            <select class="chosen-select" id="q10">
                 <option value></option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
@@ -124,12 +136,48 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
-
+            <button class="btn btn-lg btn-primary"> Submit</button></a>
             </footer>
 
     </div>
 
+   
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script>
 
+    $(".btn").click( function(){
+        var choices = [
+        // $("#q1").val(),
+        // $("#q2").val(), 
+        // $("#q3").val(), 
+        // $("#q4").val(), 
+        // $("#q5").val(), 
+        // $("#q6").val(), 
+        // $("#q7").val(), 
+        // $("#q8").val(), 
+        // $("#q9").val(), 
+        // $("#q10").val(), 
+
+    ];
+         for(var i =1; i < 11; i++){
+           choices.push(parseInt( $("#q" + i).val()))
+             
+         }
+         $.ajax({
+        method: "POST",
+        url: "/api/friends",
+        data:{
+            choices: choices
+        }
+    }).then(function(res){
+        console.log(res);
+    })
+    })
+    
+   
+
+</script>
+ 
 </body>
-
 </html>

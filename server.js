@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //links to our apiRoutes and htmlRoutes files and passes the express npm package to those files
-require("./routing/apiRoutes")(app);
-require("./routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 //starts our server by having it listen to the port - an event
 app.listen(PORT, function() {

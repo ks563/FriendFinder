@@ -8,6 +8,7 @@ module.exports = function (app) {
     });
 
     app.post("/api/friends", function (req, res) {
+        console.log(req.body);
         //needs compatability logic
         // if () {
             //if the match score is equivalent to  certain score then the people will be a match
