@@ -192,6 +192,8 @@
         }
     }).then(function(res){
         console.log(res);
+        $("#match-name").text(data.name);
+        $("#match-img").attr("src", data.photo)
         
     })
     })
