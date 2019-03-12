@@ -16,10 +16,10 @@ module.exports = function (app) {
         var friendMath;
         for (var i = 0; i < friendsData.length; i++){
             for (var j = 0; j < newPerson.choices.length; j++){
-              friendMath += Math.abs(friendsData[i].score[j] - newPerson.choices[j])
+                friendMath += Math.abs(friendsData[i].scores[j] - newPerson.choices[j]);
             }
             if (friendMath < bestChoice) {
-                currentChoice = friendData[i];
+                currentChoice = friendsData[i];
                 bestChoice = friendMath;
                 console.log(currentChoice);
             }
